@@ -38,10 +38,10 @@ Route::get('/users/{user}', function (Users $user ) {
     return new UserResource($user);
 });
 
-// Route::view("seek","seek");
+Route::view("seek","seek")->middleware('protectedPage');
 Route::view("home","home");
 Route::view("noaccess","noaccess");
 
-Route::group(['middleware'=>['protectedPage']],function(){
-    Route::view("seek","seek");
-});
+// Route::group(['middleware'=>['protectedPage']],function(){
+//     Route::view("seek","seek");
+// });
