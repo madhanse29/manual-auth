@@ -3,6 +3,7 @@
 use App\Models\Users;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\CustomAuthController;
 
 
@@ -42,6 +43,9 @@ Route::view("seek","seek")->middleware('protectedPage');
 Route::view("home","home");
 Route::view("noaccess","noaccess");
 
+Route::view("upload","upload");
+
 // Route::group(['middleware'=>['protectedPage']],function(){
 //     Route::view("seek","seek");
 // });
+Route::post('upload',[UploadController::class,'index']); 

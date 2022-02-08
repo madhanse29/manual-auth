@@ -46,7 +46,7 @@ public function loginUser(Request $request){
 $user = Users::where('email','=',$request->email)->first();
 if($user){
 if(Hash::check($request->password,$user->password)){
- $request->session()->put('loginId',$user->id);  
+ $request->session()->put('loginId',$user->id); 
  return redirect('dashboard') ;
 }else{
 return back()->with('fail','password not matches');
@@ -60,6 +60,7 @@ $data = array();
 if(Session::has('loginId')){
     $data = Users::where('id','=',Session::get('loginId'))->first();
 }
+
     return view ('auth.dashboard',compact('data'));
 }
 public function logout(){
